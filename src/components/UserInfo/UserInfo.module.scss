@@ -1,0 +1,23 @@
+.user {
+  display: flex;
+  align-items: center;
+
+  &__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin-right: 10px;
+  }
+  &__name {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+  }
+  &__additional {
+    font-size: 12px;
+    opacity: 0.6;
+  }
+}
