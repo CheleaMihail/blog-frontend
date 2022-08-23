@@ -29,13 +29,12 @@ export const FullPost = () => {
   if (isLoading) {
     return <Post isLoading={isLoading} isFullPost />;
   }
-  console.log(data);
   return (
     <div className={styles.fullPost}>
       <Post
         id={data._id}
         title={data.title}
-        imageUrl={`http://localhost:5000${data.imageUrl}`}
+        imageUrl={data.imageUrl ? `http://localhost:5000${data.imageUrl}` : ""}
         user={data.user}
         createdAt={data.createdAt}
         viewsCount={data.viewsCount}

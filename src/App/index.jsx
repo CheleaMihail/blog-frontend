@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import { Home, Registration, Login, FullPost, AddPost } from "../pages";
 import { useEffect } from "react";
 import { fetchAuthMe, selectIsAuth } from "../redux/slices/auth";
+import PostList from "../pages/PostList";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,10 +21,13 @@ function App() {
       <div className={styles.container}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/popular" element={<Home />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/add-post" element={<AddPost />} />
           <Route path="/posts/:id" element={<FullPost />} />
+          <Route path="/posts/:id/edit" element={<AddPost />} />
+          <Route path="/tags/:name" element={<PostList />} />
         </Routes>
       </div>
     </div>

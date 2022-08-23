@@ -34,6 +34,7 @@ const authSlice = createSlice({
     },
   },
   extraReducers: {
+    //login
     [fetchAuth.pending]: (state) => {
       state.data = null;
       state.status = "loading";
@@ -46,6 +47,8 @@ const authSlice = createSlice({
       state.data = null;
       state.status = "error";
     },
+
+    //get info about me
     [fetchAuthMe.pending]: (state) => {
       state.data = null;
       state.status = "loading";
@@ -58,6 +61,8 @@ const authSlice = createSlice({
       state.data = null;
       state.status = "error";
     },
+
+    //register
     [fetchRegister.pending]: (state) => {
       state.data = null;
       state.status = "loading";
