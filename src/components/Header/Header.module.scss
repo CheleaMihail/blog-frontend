@@ -1,0 +1,80 @@
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 0px;
+  margin-bottom: 30px;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 1280px;
+  padding: 0px 55px;
+  margin: 0px auto;
+}
+
+.header {
+  &__body {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    background-color: black;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 35px;
+    text-transform: uppercase;
+    letter-spacing: 0.15px;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #4361ee;
+    }
+  }
+
+  &__butons {
+    button {
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #4361ee;
+      color: #fff;
+      font-size: 16px;
+      opacity: 1;
+      padding: 10px 15px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+
+      &.white {
+        color: blue;
+        background: #fff;
+        border: 1px solid #4361ee;
+        transition: background 0.4s ease-in-out, border 0.3s ease-in-out;
+
+        &:hover {
+          border: 1px solid blue;
+          background: lighten($color: #4361ee, $amount: 38);
+        }
+      }
+
+      &.red {
+        background: red;
+        &:hover {
+          background: darken($color: red, $amount: 30);
+        }
+      }
+
+      &:hover {
+        background: darken($color: #4361ee, $amount: 30);
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

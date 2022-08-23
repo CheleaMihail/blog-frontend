@@ -1,0 +1,49 @@
+.block {
+  display: flex;
+  gap: 10px;
+  margin: 10px 16px 0px 16px;
+  padding-bottom: 20px;
+}
+
+.avatar {
+  flex: 0 0 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.form {
+  flex: 0 1 100%;
+  &__inputField {
+    border: 1px solid gray;
+    border-radius: 5px;
+
+    textarea {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      opacity: 0.7;
+      overflow: hidden;
+
+      &::placeholder {
+        color: gray;
+      }
+    }
+  }
+  &__button {
+    border: none;
+    border-radius: 5px;
+    background: #4361ee;
+    color: #fff;
+    font-size: 16px;
+    opacity: 1;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      background: darken($color: #4361ee, $amount: 30);
+    }
+  }
+}
