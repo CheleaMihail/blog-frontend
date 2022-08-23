@@ -1,9 +1,11 @@
 import React from "react";
-import classNames from "classnames";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import classNames from "classnames";
 
 import styles from "./Post.module.scss";
 import UserInfo from "../UserInfo";
+import { fetchRemovePost } from "../../redux/slices/posts";
 
 const Post = ({
   id,
@@ -19,11 +21,16 @@ const Post = ({
   isLoading,
   isEditable,
 }) => {
+  const dispatch = useDispatch();
+  const onClickRemove = () => {
+    if (window.confirm("You want to delete this post?")) {
+      dispatch(fetchRemovePost(id));
+    }
+  };
+
   if (isLoading) {
     return <h1>Loading</h1>;
   }
-
-  const onClickRemove = () => {};
 
   return (
     <div className={styles.post}>

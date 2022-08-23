@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useRef, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SimpleMDE from "react-simplemde-editor";
 
@@ -9,8 +9,10 @@ import { selectIsAuth } from "../../redux/slices/auth";
 import axios from "../../axios";
 
 export const AddPost = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const isAuth = useSelector(selectIsAuth);
+  const isEditing = Boolean(id);
   const inputFileRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
@@ -38,11 +40,15 @@ export const AddPost = () => {
   const onSubmit = async () => {
     try {
       setLoading(true);
-      const fields = { title, imageUrl, tags: tags.split(","), text };
-      console.log(fields);
-      const { data } = await axios.post("/posts", fields);
-      const id = data._id;
-      navigate(`/posts/${id}`);
+      const fields = { title, imageUrl, tags, text };
+
+      const { data } = isEditing
+        ? await axios.patch(`/posts/${id}`, fields)
+        : await axios.post("/posts", fields);
+
+      const _id = isEditing ? id : data._id;
+
+      navigate(`/posts/${_id}`);
       setLoading(false);
     } catch (error) {
       console.warn(error);
@@ -68,6 +74,17 @@ export const AddPost = () => {
     }),
     []
   );
+
+  useEffect(() => {
+    if (id) {
+      axios.get(`/posts/${id}`).then((res) => {
+        setTitle(res.data.title);
+        setImageUrl(res.data.imageUrl);
+        setTags(res.data.tags.join(","));
+        setText(res.data.text);
+      });
+    }
+  }, []);
 
   if (!window.localStorage.getItem("token") && !isAuth) {
     return <Navigate to="/" />;
@@ -125,7 +142,7 @@ export const AddPost = () => {
       />
       <div className={styles.buttons}>
         <button className={styles.postBtn} onClick={onSubmit}>
-          Post
+          {isEditing ? "Save" : "Post"}
         </button>
         <Link to="/">
           <button className={styles.cancelBtn}>Cancel</button>
