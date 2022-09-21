@@ -9,6 +9,14 @@
   flex: 0 0 40px;
   height: 40px;
   border-radius: 50%;
+
+  &.noImage {
+    background-color: violet;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-size: 20px;
+  }
 }
 
 .form {

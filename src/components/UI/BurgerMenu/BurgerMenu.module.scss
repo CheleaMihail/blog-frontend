@@ -1,0 +1,37 @@
+.menu {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+  display: none;
+  z-index: 10;
+
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background: #000;
+    border-radius: 10px;
+    transform-origin: 1px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.openedMenu {
+    div {
+      background: #fff;
+      &:nth-child(1) {
+        transform: rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}

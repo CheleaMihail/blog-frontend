@@ -7,7 +7,11 @@ const UserInfo = ({ avatarUrl, fullName, additionalText }) => {
     <div className={styles.user}>
       <img
         className={styles.user__avatar}
-        src={avatarUrl || require("../../assets/noavatar.png")}
+        src={
+          avatarUrl
+            ? `http://localhost:5000${avatarUrl}`
+            : require("../../assets/question.png")
+        }
         alt={fullName}
       />
       <div className={styles.user__details}>

@@ -1,0 +1,105 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal {
+  box-sizing: border-box;
+  position: absolute;
+  width: 400px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  user-select: none;
+
+  &__container {
+    position: relative;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__closeBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: url("../../../assets/close.png") center/cover no-repeat;
+    cursor: pointer;
+  }
+
+  &__body {
+    margin-bottom: 10px;
+  }
+
+  &__image {
+    width: 100px;
+    height: 100px;
+    background: url("../../../assets/attention.gif") center/cover no-repeat;
+    margin: 0px auto 10px auto;
+  }
+
+  &__message {
+    padding: 0px 20px;
+    text-align: center;
+  }
+
+  &__bottom {
+    display: flex;
+    margin-bottom: 5px;
+    gap: 15px;
+  }
+
+  @media (max-width: 420px) {
+    width: 300px;
+  }
+}
+
+.button {
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+
+  &.white {
+    color: blue;
+    background: #fff;
+    border: 1px solid #4361ee;
+    transition: background 0.4s ease-in-out, border 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid blue;
+      background: lighten($color: #4361ee, $amount: 38);
+    }
+  }
+
+  &.blue {
+    background: #4361ee;
+    color: #fff;
+    border: 1px solid #4361ee;
+    transition: background 0.4s ease-in-out, border 0.3s ease-in-out;
+
+    &:hover {
+      background: darken($color: #4361ee, $amount: 30);
+    }
+  }
+}

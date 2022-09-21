@@ -1,7 +1,19 @@
 .container {
   box-sizing: border-box;
-  width: 1280px;
-  padding: 0px 55px;
   margin: 0px auto;
   height: 100%;
+  max-width: 1280px;
+  padding: 10px 55px;
+
+  @media (max-width: 992px) {
+    padding: 10px 40px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 30px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 10px;
+  }
 }
