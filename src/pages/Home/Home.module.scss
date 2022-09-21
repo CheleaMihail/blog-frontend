@@ -7,6 +7,10 @@
   &__body {
     display: flex;
     gap: 30px;
+
+    @media (max-width: 600px) {
+      display: block;
+    }
   }
 
   &__feed {
@@ -15,6 +19,10 @@
 
   &__details {
     flex: 0 1 33.333%;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 }
 

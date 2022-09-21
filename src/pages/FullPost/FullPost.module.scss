@@ -1,0 +1,38 @@
+.backBtn {
+  display: inline-block;
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  cursor: pointer;
+
+  span {
+    padding-left: 20px;
+    position: relative;
+
+    &::before {
+      content: "<";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      animation: animation 0.8s ease-in-out infinite;
+    }
+  }
+
+  &:hover {
+    color: gray;
+  }
+}
+
+@keyframes animation {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: 5px;
+  }
+  100% {
+    left: 0px;
+  }
+}

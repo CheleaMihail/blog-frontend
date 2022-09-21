@@ -1,10 +1,10 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./App.module.scss";
 import Header from "../components/Header";
 import { Home, Registration, Login, FullPost, AddPost } from "../pages";
-import { useEffect } from "react";
 import { fetchAuthMe, selectIsAuth } from "../redux/slices/auth";
 import PostList from "../pages/PostList";
 
@@ -25,7 +25,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/add-post" element={<AddPost />} />
-          <Route path="/posts/:id" element={<FullPost />} />
+          <Route path="/posts/:id" element={<FullPost isAuth={isAuth} />} />
           <Route path="/posts/:id/edit" element={<AddPost />} />
           <Route path="/tags/:name" element={<PostList />} />
         </Routes>

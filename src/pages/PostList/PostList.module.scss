@@ -1,14 +1,40 @@
 .list {
-  &__title {
-    margin: 0px 0px 30px 0px;
+  box-sizing: border-box;
+  margin: 0px auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 0px 20px 0px;
+
+    a {
+      box-sizing: border-box;
+      display: inline-block;
+      color: #000;
+      border-bottom: 1px solid #000;
+      font-size: 18px;
+
+      &:hover {
+        border: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      margin: 0px 0px 10px 0px;
+    }
+
+    @media (max-width: 768px) {
+      margin: 0px 0px 15px 0px;
+    }
   }
 
-  &__item {
-    flex: 1 1 50%;
+  &__title {
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 420px) {
+      font-size: 16px;
+    }
   }
-}
-.aaaa {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
 }

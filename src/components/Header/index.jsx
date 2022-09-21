@@ -1,13 +1,18 @@
-import React from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectIsAuth, logout } from "../../redux/slices/auth";
 
+import { selectIsAuth, logout } from "../../redux/slices/auth";
+import RightNav from "../RightNav";
+import BurgerMenu from "../UI/BurgerMenu";
 import styles from "./Header.module.scss";
 
 const Header = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
+  const [isOpen, setIsOpen] = useState(false);
+  const hideNavBar = () => setIsOpen(false);
+
   const onClickLogout = () => {
     if (window.confirm("Are you sure you want to exit")) {
       dispatch(logout());
@@ -43,6 +48,33 @@ const Header = () => {
               </>
             )}
           </div>
+          <BurgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+          <RightNav show={isOpen}>
+            {isAuth ? (
+              <>
+                <Link to="/add-post" onClick={() => hideNavBar()}>
+                  Create post
+                </Link>
+                <a
+                  onClick={() => {
+                    hideNavBar();
+                    onClickLogout();
+                  }}
+                >
+                  Log out
+                </a>
+              </>
+            ) : (
+              <>
+                <Link to="/login" onClick={() => hideNavBar()}>
+                  Log in
+                </Link>
+                <Link to="/register" onClick={() => hideNavBar()}>
+                  Register
+                </Link>
+              </>
+            )}
+          </RightNav>
         </div>
       </div>
     </header>

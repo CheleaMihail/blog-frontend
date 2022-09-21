@@ -67,7 +67,7 @@ const Post = ({
           <ul className={styles.post__tags}>
             {tags.map((name) => (
               <li key={name}>
-                <a href={`/tag/${name}`}>#{name}</a>
+                <a href={`/tags/${name}`}>#{name}</a>
               </li>
             ))}
           </ul>
